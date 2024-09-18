@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        
+        function getComputerChoice() {
+            let num = Math.floor(Math.random() * 3);
+            if(num == 0) return "rock";
+            else if(num == 1) return "paper";
+            else return "scissors";
+        }
+        function getHumanChoice() {
+            let choice = prompt("Enter rock, paper, or scissors: ");
+            return choice;
+        }
+        
+        function playGame() {
+            let humanScore = 0;
+            let computerScore = 0;
+            function playRound(humanChoice, computerChoice) {
+                let h_choice = humanChoice.toLowerCase();
+                let c_choice = computerChoice.toLowerCase();
+                if(h_choice == c_choice) {
+                    console.log("Draw!");
+                }
+                else if(h_choice == "rock" && c_choice == "scissors") {
+                    console.log("You win! " + h_choice + " beats " + c_choice);
+                    humanScore++;
+                }
+                else if(h_choice == "paper" && c_choice == "rock") {
+                    console.log("You win! " + h_choice + " beats " + c_choice);
+                    humanScore++;
+                }
+                else if(humanChoice == "scissors" && computerChoice == "paper") {
+                    console.log("You win! " + h_choice + " beats " + c_choice);
+                    humanScore++;
+                }
+                else {
+                    console.log("You lose! " + c_choice + " beats " + h_choice);
+                    computerScore++;
+                }
+            }  
+            for(let i = 0; i < 5; i++) {
+                humanChoice = getHumanChoice();
+                computerChoice = getComputerChoice();
+                playRound(humanChoice, computerChoice);
+                console.log("Human: " + humanScore + " Computer: " + computerScore);
+            }
+        }
+
+        playGame();
+            
+    </script>
+</body>
+</html>
